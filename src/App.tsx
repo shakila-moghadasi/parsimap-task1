@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import {
+  Map ,
+  Marker ,
+  ViewPort 
+} from '@parsimap/react-mapbox-gl';
 
 function App() {
+
+  const [viewPort, setViewPort] = useState<ViewPort>({
+    zoom: 15,
+    lng: 51.3957,
+    lat: 35.7022,
+  });
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Map
+      token={"p1c49eaeed1695494288832a5d61c482ec556c0664"}
+      {...viewPort}
+    >
+      <Marker lngLat={[51.3957, 35.7022]} />
+    </Map>
   );
 }
 
